@@ -22,3 +22,8 @@ set product_id=old.product_id,
  supplier_name=old.supplier_name, 
  unit_price=old.unit_price; 
 END 
+
+select *from product1 //
+update product1 set unit_prices=900 where product_id=12//
+select *from product_prices_history //
+select *from product1 //
