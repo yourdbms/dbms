@@ -1,0 +1,43 @@
+mysql> create procedure getgrades(in marks int)
+    -> begin
+    -> declare a int;
+    -> set a=marks;
+    -> if a>75 then
+    -> select concat("GRade A for marks", a);
+    -> elseif 75>a and a>60 then
+    -> select concat("GRade b for marks", a);
+    -> else
+    -> select concat("GRade FAIL for marks", a);
+    -> end if;
+    -> end //
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call getgrades(99) //
++--------------------------------+
+| concat("GRade A for marks", a) |
++--------------------------------+
+| GRade A for marks99            |
++--------------------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call getgrades(69) //
++--------------------------------+
+| concat("GRade b for marks", a) |
++--------------------------------+
+| GRade b for marks69            |
++--------------------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call getgrades(35) //
++-----------------------------------+
+| concat("GRade FAIL for marks", a) |
++-----------------------------------+
+| GRade FAIL for marks35            |
++-----------------------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
