@@ -1,0 +1,24 @@
+question: Create a trigger on account table before update in new inserted amount is less than “0” then set amount “0”  else if amount is greater than 100 then set amount 100
+
+
+delimiter //
+create table account(accno int,amount int); //
+CREATE TRIGGER upd_check BEFORE UPDATE ON account
+FOR EACH ROW
+BEGIN
+ IF NEW.amount < 0 THEN
+SET NEW.amount = 0;
+ ELSEIF NEW.amount > 100 THEN
+   SET NEW.amount = 100;
+    END IF;
+END
+
+select *from account;//
+ update account set amount= -12 where accno=101 ;//
+select *from account;//
+update account set amount=200 where accno=101;//
+select *from account;//
+
+
+
+
