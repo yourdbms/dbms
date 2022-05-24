@@ -1,0 +1,17 @@
+mysql> create procedure addno3(in var1 int,in var2 int)
+    -> begin
+    -> declare a1,a2,a3 int;
+    -> set a1=var1;
+    -> set a2=var2;
+    -> set a3=a1+a2;
+    -> select concat('sum is: ',a3) as "sumofnumber" ;
+    -> end //
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call addno3(12,23);//
++-------------+
+| sumofnumber |
++-------------+
+| sum is: 35  |
++-------------+
+1 row in set (0.00 sec)
