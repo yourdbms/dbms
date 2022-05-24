@@ -1,0 +1,24 @@
+delimiter //
+
+CREATE TABLE product_price_history 
+(product_id int(5), 
+product_name varchar(30), 
+supplier_name varchar(30), 
+unit_price int); 
+
+CREATE TABLE product1 
+(product_id int(5), 
+product_name varchar(30), 
+supplier_name varchar(30), 
+unit_price int ); 
+
+drop trigger if exists price_history_trigger;
+CREATE TRIGGER price_history_trigger 
+BEFORE UPDATE on product1 
+FOR EACH ROW BEGIN 
+INSERT INTO product_price_history 
+set product_id=old.product_id, 
+ product_name=old.product_name, 
+ supplier_name=old.supplier_name, 
+ unit_price=old.unit_price; 
+END 
